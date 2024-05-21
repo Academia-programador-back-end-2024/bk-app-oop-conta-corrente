@@ -25,7 +25,41 @@
     public void Deposit(float value)
     {
         this.Balance += value;
+        // How exactly does this Deposit argument work?
         this.RegisterHistory(Deposit, value);
+    }
+
+    public void Withdraw(float value)
+    {
+        if (this.Balance + Limit >= value)
+        {
+            this.Balance -= value;
+            this.RegisterHistory(Withdraw, value);
+        }
+        else
+        {
+            Console.WriteLine("This withdraw is not possible!");
+        }
+    }
+
+    public void Transfer(Account sender, Account receiver, float value)
+    {
+        if (sender.Balance >= value)
+        {
+            Console.WriteLine(sender.Balance);
+            Console.WriteLine(receiver.Balance);
+            sender.Balance -= value;
+            receiver.Balance += value;
+            Console.WriteLine("\n");
+            Console.WriteLine(sender.Balance);
+            Console.WriteLine(receiver.Balance);
+
+
+        }
+        else
+        {
+            Console.WriteLine("The sender does not have enough balance to perform this operation");
+        }
     }
 
     public void RegisterHistory(AccountOperation operation, float value)
@@ -52,6 +86,7 @@
         }
     }
 
+
 }
 
 class Program
@@ -59,14 +94,45 @@ class Program
     static void Main(string[] args)
     {
         Account AccountOne = new Account();
-        AccountOne.Balance = 1000;
-        AccountOne.CheckBalance();
-        AccountOne.Deposit(2000);
-        AccountOne.Deposit(3000);
-        AccountOne.Deposit(3000);
-        AccountOne.Deposit(3000);
-        AccountOne.Deposit(3000);
-        AccountOne.ShowHistory();
+        Account AccountTwo = new Account();
+        // First scenario  
+        //AccountOne.Balance = 1000;
+        //AccountOne.Limit = 500;
+        //AccountOne.Withdraw(400);
+        //AccountOne.CheckBalance();
 
+        // Second scenario
+        //AccountOne.Balance = 1000;
+        //AccountOne.Limit = 500;
+        //AccountOne.Withdraw(1500);
+        //AccountOne.CheckBalance();
+
+        // Third scenario, does it need an special account?
+
+
+        // Fourth scenario  
+        //AccountOne.Balance = 1000;
+        //AccountOne.Deposit(500);
+        //AccountOne.CheckBalance();
+
+        // Fifth scenario
+        //AccountOne.Balance = 1000;
+        //AccountOne.CheckBalance();
+
+        // Sixth scenario
+        //AccountOne.Balance = 1000;
+        //AccountTwo.Balance = 500;
+        //AccountOne.Transfer(AccountOne, AccountTwo, 300);
+        //AccountOne.CheckBalance();
+        //AccountTwo.CheckBalance();
+
+
+
+
+        //Account AccountTwo = new Account();
+        //AccountTwo.Limit = 5000;
+
+        //AccountOne.Transfer(AccountOne, AccountTwo, 500);
     }
+
 }
