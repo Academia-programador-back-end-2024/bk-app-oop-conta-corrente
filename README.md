@@ -74,3 +74,13 @@ E existe outra conta corrente com saldo de R$ 500
 Quando o cliente transfere R$ 300 da primeira conta para a segunda conta
 Então o saldo da primeira conta deve ser R$ 700
 E o saldo da segunda conta deve ser R$ 800
+
+#### Cenário: Visualização de Extrato
+Dado que o cliente tenha uma conta corrente 
+E que o cliente tenha realizado várias transações na conta corrente como saque, deposito, transferencia
+Quando o cliente solicitar a visualização do extrato da conta
+Então o sistema deve exibir as informações do cliente contendo: Nome, Sobrenome, CPF
+E o sistema deve exibir as seguintes informações da conta:
+Número da conta, Saldo atual, Status (se é uma conta especial ou não), Limite de saque
+E o sistema deve exibir o histórico de movimentações da conta
+Valor da transação, Tipo (crédito ou débito)
