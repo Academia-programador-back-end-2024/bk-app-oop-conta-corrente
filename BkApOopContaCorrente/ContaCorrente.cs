@@ -115,6 +115,14 @@ Limite: {Limite}
 
     public class ContaCorrente : ContaBase
     {
+        public ContaCorrente(decimal saldo) : base(saldo)
+        {
+
+        }
+        public ContaCorrente() : base()
+        {
+
+        }
         public override string CorDoCartao()
         {
             return "Branco";
